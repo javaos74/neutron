@@ -221,13 +221,13 @@ class APICMechanismDriver(api.MechanismDriver):
             # hyungsok@cisco.com  add privaet network for tenant named 'vrf' and binding with db
             ctx_owner = None
             ctx_name = None
-            if apic_config.tenant_network_name : 
-                self.apic_manager.ensure_context_enforced(tenant_id, apic_config.tenant_network_name)
+            if cfg.CONF.tenant_network_name :
                 ctx_owner = tenant_id
-                ctx_name = apic_config.tenant_network_name
+                ctx_name = cfg.CONF.tenant_network_name
+                self.apic_manager.ensure_context_enforced(ctx_owner, ctx_name)
             else:
                 self.apic_manager.ensure_context_enforced()
-            
+
             # Create BD and EPG for this network
             with self.apic_manager.apic.transaction() as trs:
                 self.apic_manager.ensure_bd_created_on_apic(tenant_id,
