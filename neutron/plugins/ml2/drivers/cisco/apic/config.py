@@ -26,6 +26,8 @@ global_opts = [
     cfg.StrOpt('apic_system_id',
                default='openstack',
                help=_("Prefix for APIC domain/names/profiles created")),
+    cfg.StrOpt('tenant_network_name',
+                 help=_('Tenant private name for l3 context')),               
 ]
 
 
@@ -88,8 +90,6 @@ apic_opts = [
     cfg.FloatOpt('apic_agent_poll_interval',
                  default=2,
                  help=_('Interval between agent poll for topology (in sec)')),
-    cfg.StrOpt('tenant_network_name',
-               help=_("Specifiy tenant network name, if missing default common/{system_id}_shared tenant network used")),
 ]
 
 
