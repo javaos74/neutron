@@ -88,6 +88,8 @@ apic_opts = [
     cfg.FloatOpt('apic_agent_poll_interval',
                  default=2,
                  help=_('Interval between agent poll for topology (in sec)')),
+    cfg.StrOpt('tenant_network_name',
+               help=_("Specifiy tenant network name, if missing default common/{system_id}_shared tenant network used")),
 ]
 
 
